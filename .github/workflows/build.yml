@@ -1,0 +1,36 @@
+# Place at .github/workflows/build.yml in the santimarro/santimarro repo.
+# Requires repo secret ACCESS_TOKEN: fine-grained PAT, All repositories,
+# read-only permissions: Contents + Metadata (repos), Followers + Starring (account).
+name: README build
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 9 * * *" # 06:00 Argentina
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install pillow
+      - name: Fetch GitHub stats
+        env:
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        run: python fetch_github_stats.py
+      - name: Generate profile image
+        run: python generate_github_profile.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add github-profile.png github-stats.json
+          git commit -m "Update profile stats" || echo "No changes to commit"
+          git push
