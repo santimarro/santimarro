@@ -114,6 +114,10 @@ def load_stats():
 
 STATS = load_stats()
 
+# widen the column if the LOC line does not fit at the minimum width
+_loc_chars = sum(len(t) for t, _, _ in loc_line(STATS["net"], STATS["additions"], STATS["deletions"]))
+TEXT_W = max(TEXT_W, _loc_chars)
+
 
 def header(user, host):
     title = user + "@" + host
@@ -171,11 +175,14 @@ def main():
     art_lh = int(ART_SIZE * 1.25)
     text_lh = int(TEXT_SIZE * 1.3)
     art_adv = art_font.getlength("M")
-    text_adv = text_font.getlength("M")
 
     art_w = int(max(len(l) for l in art) * art_adv)
     art_h = len(art) * art_lh
-    text_w = int(TEXT_W * text_adv)
+    text_w = 0
+    for segments in LINES:
+        w = sum((text_font_bold if bold else text_font).getlength(text)
+                for text, _, bold in segments)
+        text_w = max(text_w, int(w) + 1)
     text_h = len(LINES) * text_lh
 
     W = PAD + art_w + GAP + text_w + PAD
