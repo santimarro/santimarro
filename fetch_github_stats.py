@@ -20,7 +20,7 @@ def gh(args):
     return r.stdout.strip()
 
 
-def repo_stats(name_with_owner, attempts=10):
+def repo_stats(name_with_owner, attempts=20):
     for i in range(attempts):
         out = gh([f"repos/{name_with_owner}/stats/contributors"])
         if out:
