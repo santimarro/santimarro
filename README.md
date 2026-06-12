@@ -1,6 +1,5 @@
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:161b22,100:30363d&height=200&section=header&text=Santiago%20Marro&fontSize=42&fontColor=e6edf3&animation=fadeIn&fontAlignY=35&desc=AI%20Lead%20%7C%20PhD%20in%20AI%20%26%20NLP&descSize=18&descAlignY=55&descColor=8b949e" width="100%" />
-</p>
+<h1 align="center">Santiago Marro</h1>
+<h3 align="center">AI Lead | PhD in AI & NLP</h3>
 
 <p align="center">
   <a href="https://git.io/typing-svg">
@@ -76,8 +75,4 @@ Most of my recent work lives in private repos at Santex — agentic platforms, L
 
 <p align="center">
   <img src="https://komarev.com/ghpvc/?username=santimarro&color=58a6ff&style=flat-square&label=Profile+Views" alt="Profile views" />
-</p>
-
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:161b22,100:30363d&height=120&section=footer" width="100%" />
 </p>
