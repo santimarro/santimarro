@@ -6,7 +6,5 @@
   "additions": 4852103,
   "deletions": 2791648,
   "net": 2060455,
-  "skipped": [
-    "santimarro/WrenAI"
-  ]
+  "skipped": []
 }
